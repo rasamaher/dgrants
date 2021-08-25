@@ -22,7 +22,10 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      display: ['group-hover'],
+      stroke: ['group-hover', 'hover'],
+    },
   },
   plugins: [require('@tailwindcss/forms'), require('nightwind')],
 };
