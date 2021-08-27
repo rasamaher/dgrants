@@ -112,13 +112,22 @@ function useGrantDetail() {
 
   // --- Check properties ---
   const hasWebsite = computed(() =>
-    grant.value ? metadata.value[grant.value.metaPtr]?.properties?.projectWebsite !== undefined : false
+    grant.value
+      ? metadata.value[grant.value.metaPtr]?.properties?.projectWebsite !== undefined ||
+        metadata.value[grant.value.metaPtr]?.properties?.projectWebsite !== ''
+      : false
   );
   const hasGithub = computed(() =>
-    grant.value ? metadata.value[grant.value.metaPtr]?.properties?.projectGithub !== undefined : false
+    grant.value
+      ? metadata.value[grant.value.metaPtr]?.properties?.projectGithub !== undefined ||
+        metadata.value[grant.value.metaPtr]?.properties?.projecGithub !== ''
+      : false
   );
   const hasHandle = computed(() =>
-    grant.value ? metadata.value[grant.value.metaPtr]?.properties?.twitterHandle !== undefined : false
+    grant.value
+      ? metadata.value[grant.value.metaPtr]?.properties?.twitterHandle !== undefined ||
+        metadata.value[grant.value.metaPtr]?.properties?.twitterHandle !== ''
+      : false
   );
 
   // --- Edit capabilities ---
