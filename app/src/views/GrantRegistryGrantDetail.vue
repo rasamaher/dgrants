@@ -120,7 +120,7 @@ function useGrantDetail() {
   const hasGithub = computed(() =>
     grant.value
       ? metadata.value[grant.value.metaPtr]?.properties?.projectGithub !== undefined ||
-        metadata.value[grant.value.metaPtr]?.properties?.projecGithub !== ''
+        metadata.value[grant.value.metaPtr]?.properties?.projectGithub !== ''
       : false
   );
   const hasHandle = computed(() =>
