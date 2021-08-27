@@ -1,68 +1,72 @@
 <template>
   <div class="flex flex-col justify-center sm:px-6 lg:px-8">
-    <div class="sm:mx-auto sm:w-full sm:max-w-md">
-      <img
-        class="mx-auto h-12 w-auto"
-        src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-        alt="Workflow"
-      />
-      <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Create New Grant</h2>
+    <div class="sm:mx-auto sm:w-full sm:max-w-md mt-5 md:mt-20 mb-12 md:mb-24">
+      <h1>Setup Grant Contract</h1>
     </div>
 
-    <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md text-left">
-      <div class="py-8 px-4 border border-gray-200 shadow sm:rounded-lg sm:px-6 bg-gray-50">
-        <form class="space-y-6" @submit.prevent="createGrant">
-          <!-- Owner address -->
-          <BaseInput
-            v-model="form.owner"
-            description="The owner has permission to edit the grant"
-            id="owner-address"
-            label="Owner address"
-            :rules="isValidAddress"
-            errorMsg="Please enter a valid address"
-          />
+    <div class="text-left">
+      <form class="space-y-5" @submit.prevent="createGrant">
+        <p class="border-b border-grey-100"></p>
 
-          <!-- Payee address -->
-          <BaseInput
-            v-model="form.payee"
-            description="The address contributions and matching funds are sent to"
-            id="payee-address"
-            label="Payee address"
-            :rules="isValidAddress"
-            errorMsg="Please enter a valid address"
-          />
+        <!-- Grant name -->
+        <BaseInput
+          v-model="form.name"
+          placeholder="Fusion – Icon Pack for Cryptonauts"
+          id="grant-name"
+          label="Title"
+          :rules="isDefined"
+          errorMsg="Please enter a name"
+        />
 
-          <!-- Grant name -->
-          <BaseInput
-            v-model="form.name"
-            description="Your grant's name"
-            id="grant-name"
-            label="Grant name"
-            :rules="isDefined"
-            errorMsg="Please enter a name"
-          />
+        <!-- Owner address -->
+        <BaseInput
+          v-model="form.owner"
+          placeholder="0xBADCdDEA250f1e317Ba59999232464933C4E8D90"
+          description="has permission to edit the grant"
+          id="owner-address"
+          label="Owner address"
+          :rules="isValidAddress"
+          errorMsg="Please enter a valid address"
+        />
 
-          <!-- Grant name -->
-          <BaseInput
-            v-model="form.description"
-            description="Your grant's description"
-            id="grant-description"
-            label="Grant description"
-            :rules="isDefined"
-            errorMsg="Please enter a description"
-          />
+        <!-- Payee address -->
+        <BaseInput
+          v-model="form.payee"
+          placeholder="0xBADCdDEA250f1e317Ba59999232464933C4E8D90"
+          description="contributions and matching funds are sent to"
+          id="payee-address"
+          label="Payee address"
+          :rules="isValidAddress"
+          errorMsg="Please enter a valid address"
+        />
 
-          <!-- Submit button -->
-          <button
-            type="submit"
-            class="btn btn-primary w-full text-center"
-            :class="{ 'btn-primary-disabled': !isFormValid }"
-            :disabled="!isFormValid"
-          >
-            Create Grant
-          </button>
-        </form>
-      </div>
+        <!-- Grant Description -->
+        <BaseInput
+          v-model="form.description"
+          description="Your grant's description"
+          id="grant-description"
+          label="Grant description"
+          :rules="isDefined"
+          errorMsg="Please enter a description"
+        />
+
+        <div class="grid grid-cols-12 border-b border-grey-100">
+          <div class="col-span-10 md:col-start-4 md:col-span-6 pt-5 pb-10 text-grey-400">
+            Your good to go deploy your grant on chain. You can add and edit your Grant’s detailed informations
+            afterwards.
+          </div>
+        </div>
+
+        <!-- Submit button -->
+        <button
+          type="submit"
+          class="btn btn-primary float-right"
+          :class="{ 'btn-primary-disabled': !isFormValid }"
+          :disabled="!isFormValid"
+        >
+          Deploy Contract
+        </button>
+      </form>
     </div>
   </div>
 </template>

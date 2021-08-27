@@ -17,70 +17,67 @@
 
   <!-- Editing grant -->
   <div v-else-if="grant" class="flex flex-col justify-center sm:px-6 lg:px-8">
-    <div class="sm:mx-auto sm:w-full sm:max-w-md">
-      <img
-        class="mx-auto h-12 w-auto"
-        src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-        alt="Workflow"
-      />
-      <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Edit Grant {{ grantMetadata?.name }}</h2>
+    <div class="sm:mx-auto sm:w-full mt-5 md:mt-20 mb-12 md:mb-24">
+      <h1>Edit Grant<br />"{{ grantMetadata?.name }}"</h1>
     </div>
 
-    <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md text-left">
-      <div class="py-8 px-4 border border-gray-200 shadow sm:rounded-lg sm:px-6 bg-gray-50">
-        <form class="space-y-6" @submit.prevent="saveEdits">
-          <!-- Owner address -->
-          <BaseInput
-            v-model="form.owner"
-            description="The owner has permission to edit the grant"
-            id="owner-address"
-            label="Owner address"
-            :rules="isValidAddress"
-            errorMsg="Please enter a valid address"
-          />
+    <div class="text-left">
+      <form class="space-y-5" @submit.prevent="saveEdits">
+        <p class="border-b border-grey-100"></p>
 
-          <!-- Payee address -->
-          <BaseInput
-            v-model="form.payee"
-            description="The address contributions and matching funds are sent to"
-            id="payee-address"
-            label="Payee address"
-            :rules="isValidAddress"
-            errorMsg="Please enter a valid address"
-          />
+        <!-- Owner address -->
+        <BaseInput
+          v-model="form.owner"
+          description="The owner has permission to edit the grant"
+          id="owner-address"
+          label="Owner address"
+          :rules="isValidAddress"
+          errorMsg="Please enter a valid address"
+        />
 
-          <!-- Grant name -->
-          <BaseInput
-            v-model="form.name"
-            description="Your grant's name"
-            id="grant-name"
-            label="Grant name"
-            :rules="isDefined"
-            errorMsg="Please enter a name"
-          />
+        <!-- Payee address -->
+        <BaseInput
+          v-model="form.payee"
+          description="The address contributions and matching funds are sent to"
+          id="payee-address"
+          label="Payee address"
+          :rules="isValidAddress"
+          errorMsg="Please enter a valid address"
+        />
 
-          <!-- Grant Description -->
-          <BaseInput
-            v-model="form.description"
-            description="Your grant's description"
-            id="grant-description"
-            label="Grant description"
-            :rules="isDefined"
-            errorMsg="Please enter a description"
-          />
+        <!-- Grant name -->
+        <BaseInput
+          v-model="form.name"
+          description="Your grant's name"
+          id="grant-name"
+          label="Grant name"
+          :rules="isDefined"
+          errorMsg="Please enter a name"
+        />
 
-          <!-- Submit and cancel buttons -->
+        <!-- Grant Description -->
+        <BaseInput
+          v-model="form.description"
+          description="Your grant's description"
+          id="grant-description"
+          label="Grant description"
+          :rules="isDefined"
+          errorMsg="Please enter a description"
+        />
+
+        <!-- Submit and cancel buttons -->
+        <div class="flex justify-end pt-6">
           <button
             type="submit"
-            class="btn btn-primary w-full"
+            class="btn btn-primary mr-5"
             :class="{ 'btn-primary-disabled': !isFormValid }"
             :disabled="!isFormValid"
           >
             Save Edits
           </button>
-          <button @click.prevent="cancelEdits" class="btn btn-outline w-full">Cancel</button>
-        </form>
-      </div>
+          <button @click.prevent="cancelEdits" class="btn btn-outline">Cancel</button>
+        </div>
+      </form>
     </div>
   </div>
 
