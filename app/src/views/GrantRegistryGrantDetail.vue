@@ -188,6 +188,7 @@ function useGrantDetail() {
   const grantTotalContributions = ref();
   const grantContributionsByRound = ref();
 
+  // Note: Should this state be cached between calls? How will we manage invalidations?
   watch(
     () => [grantId.value, rounds.value, roundsMetadata.value],
     async () => {
@@ -255,7 +256,8 @@ function useGrantDetail() {
           } as GrantsRoundDetails;
         })
       );
-    }
+    },
+    { immediate: true }
   );
 
   // --- BaseHeader Navigation ---
