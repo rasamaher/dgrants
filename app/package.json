@@ -14,8 +14,6 @@
     "prettier": "prettier --write ."
   },
   "dependencies": {
-    "@dgrants/contracts": "^0.0.1",
-    "@dgrants/types": "^0.0.1",
     "@ethersproject/providers": "^5.4.4",
     "@fusion-icons/vue": "^0.0.0",
     "@headlessui/vue": "^1.2.0",
