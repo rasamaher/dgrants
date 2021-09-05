@@ -36,7 +36,7 @@ const defaultProvider = new JsonRpcProvider(RPC_URL);
 
 // State variables
 let onboard: OnboardAPI; // instance of Blocknative's onboard.js library
-const supportedChainIds = [1, 4, 31337]; // chain IDs supported by this app
+const supportedChainIds = [43113, 43114]; // chain IDs supported by this app
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const rawProvider = ref<any>(); // raw provider from the user's wallet, e.g. EIP-1193 provider
 /* eslint-enable @typescript-eslint/no-explicit-any */
@@ -53,11 +53,10 @@ function resetState() {
 }
 
 // Settings
-const infuraApiKey = import.meta.env.VITE_INFURA_ID;
 const walletChecks = [{ checkName: 'connect' }];
 const wallets = [
   { walletName: 'metamask', preferred: true },
-  { walletName: 'walletConnect', infuraKey: infuraApiKey, preferred: true },
+  { walletName: 'walletConnect', rpc: RPC_URL, preferred: true },
   { walletName: 'torus', preferred: true },
   { walletName: 'ledger', rpcUrl: RPC_URL, preferred: true },
   { walletName: 'lattice', rpcUrl: RPC_URL, appName: 'Umbra' },
@@ -70,7 +69,7 @@ export default function useWalletStore() {
    */
   function initializeOnboard() {
     onboard = Onboard({
-      dappId: import.meta.env.VITE_BLOCKNATIVE_API_KEY,
+      dappId: '333b301e-1b2d-4643-a0c7-779a2122efc4',
       darkMode: isDark.value,
       networkId: 1,
       walletSelect: { wallets },

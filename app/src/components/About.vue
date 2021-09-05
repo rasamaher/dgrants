@@ -32,11 +32,13 @@
         <!-- team ( fetching contributors from github )-->
         <div class="mt-16">
           <span>Dezentralize Gitcoin – Workstream Team: </span>
+          <!--
           <span v-bind:key="members.id" v-for="members in data">
             <span
               ><a href="{{members.html_url}}" target="_blank">{{ members.login }}</a></span
             >,
           </span>
+          -->
         </div>
 
         <!-- donate -->
